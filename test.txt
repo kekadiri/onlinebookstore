@@ -3,3 +3,4 @@ hello
 print
 ok
 failure
+now ok
