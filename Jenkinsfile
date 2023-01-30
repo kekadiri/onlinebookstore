@@ -1,19 +1,14 @@
 pipeline {
-  agent any
+  agent { label 'maven' }
   stages {
-    stage("build"){
+    stage('Checkout') {
       steps {
-        sh 'mvn clean package'
+        checkout([$class: 'GitSCM', branches: [[name: '*/J2EE']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/your-repo.git']]])
       }
     }
-    stage("test"){
+    stage('Build') {
       steps {
-        echo 'test the application'
-      }
-    }
-    stage("deploy"){
-      steps {
-        echo 'deploy the application ..'
+        sh 'mvn clean install'
       }
     }
   }
