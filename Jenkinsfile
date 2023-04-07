@@ -18,7 +18,7 @@ pipeline{
         }
         stage("deploy-dev"){
             steps{
-                sshagent(['tomcat-new']) {
+                sshagent(['d4bbf58b-b8e9-4bba-9fd1-917ac573a4e6']) {
                 sh """
                     scp -o StrictHostKeyChecking=no target/onlinebookstore.war  ubuntu@43.204.108.80:/opt/apache/webapps
                     
